@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>List of Users</h1>
+    <div class="user-list">
+        {% for user in user_names %}
+            <div>
+                <button onclick="window.location.href='/{{ user }}'">{{ user }}</button>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-container">
+        <form action="/add_user" method="post">
+            <input type="text" name="user_name" placeholder="Enter username" required>
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+    <div>
+        <button onclick="window.location.href='/admin'">Admin</button>
+    </div>
+</body>
+</html>

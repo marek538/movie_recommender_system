@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }} - Movies Rating</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Movies Rating for {{ username }}</h1>
+
+    <a href="/{{ username }}" style="text-decoration: none;">
+        <button type="button">Back to user profile</button>
+    </a>
+
+<!-- Search Form -->
+    <form method="GET" action="/{{ username }}/rating">
+        <input type="text" name="searchSpec" placeholder="Search movies..." value="{{ searchSpec }}">
+        <button type="submit">Search</button>
+    </form>
+    <a href="/{{ username }}/rating">
+        <button type="button">Clear</button>
+    </a>
+
+    <form method="POST" action="/{{ username }}/rating">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie, rating in movie_ratings %}
+                <tr>
+                    <td>{{ movie }}</td>
+                    <td>
+                        <input type="radio" id="{{ movie }}-minus1" name="{{ movie }}" value="-1" {% if rating == -1 %}checked{% endif %}>
+                        <label for="{{ movie }}-minus1">-1</label>
+
+                        <input type="radio" id="{{ movie }}-0" name="{{ movie }}" value="0" {% if rating == 0 %}checked{% endif %}>
+                        <label for="{{ movie }}-0">0</label>
+
+                        <input type="radio" id="{{ movie }}-1" name="{{ movie }}" value="1" {% if rating == 1 %}checked{% endif %}>
+                        <label for="{{ movie }}-1">1</label>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2">No movies found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Save rating</button>
+    </form>
+
+</body>
+</html>

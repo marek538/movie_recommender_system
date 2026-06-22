@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Recommended Movies</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Movie</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie, score in top_movies.items() %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ movie }}</td>
+                <td>{{ "%.4f"|format(score) }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No recommended movies found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.location.href='/'">Go Back</button>
+    <button onclick="window.location.href='/{{ username }}/rating'">View Ratings</button>
+</body>
+</html>
