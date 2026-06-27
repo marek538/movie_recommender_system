@@ -1,4 +1,4 @@
-# Movie Recommender System (Flask-based)
+# Movie Recommender System
 
 ## Project Description
 A web-based movie recommendation platform built with Flask. The system generates personalized movie suggestions for users by calculating similarity scores based on their historical ratings and film genre profiles.
