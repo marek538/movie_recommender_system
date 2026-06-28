@@ -8,3 +8,8 @@ A web-based movie recommendation platform built with Flask. The system generates
 * **TF-IDF Integration:** Implements Inverse Document Frequency (IDF) logic to weigh movie attributes, ensuring recommendations are tailored to unique user interests.
 * **User Management:** Dynamic handling of users, rating profiles, and administrative tools for re-calculating model parameters.
 * **Web Interface:** Interactive frontend built with Flask templates allowing users to search, filter, and rate movies.
+
+## Properties
+* using Python 3.12.1
+* run using python main.py
+* necessary libraries in requirements.txt
